@@ -27,6 +27,11 @@ use stdClass;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class swap_course_codes extends \core\task\adhoc_task {
+    /**
+     * Execute the task
+     *
+     * @return void
+     */
     public function execute() {
         global $DB;
         $data = $this->get_custom_data();

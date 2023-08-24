@@ -15,9 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * TODO describe file test_swap_course_codes
+ * Adhoc Task to process swapping codes
  *
  * @package    tool_solent
+ * @author     Mark Sharp <mark.sharp@solent.ac.uk>
  * @copyright  2023 Solent University {@link https://www.solent.ac.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,10 +28,13 @@ namespace tool_solent\task;
 use advanced_testcase;
 use local_solsits\helper;
 
+/**
+ * Test swapping codes adhoc task
+ */
 class swap_course_codes_test extends advanced_testcase {
     /**
      * Run the task execute.
-     *
+     * @covers \tool_solent\swap_course_codes::execute
      * @return void
      */
     public function test_execute() {
@@ -147,7 +151,7 @@ class swap_course_codes_test extends advanced_testcase {
 
     /**
      * Try some invalid values to test.
-     *
+     * @covers \tool_solent\swap_course_codes::execute
      * @return void
      */
     public function test_invalid_course_idnumbers() {

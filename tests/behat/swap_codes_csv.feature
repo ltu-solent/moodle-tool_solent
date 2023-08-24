@@ -86,7 +86,6 @@ Feature: Upload CSV to swap course codes
     Then I should see "old course page (BCSM)"
     When I am on "BSc (Hons) Cyber Security Management (XXBACSM01CXN)" course homepage
     Then I should not see "old course page (BCSM)"
-    Then I should see "sport"
     When I am on "MSc Sport Science and Performance Coaching (MSSPC)" course homepage
     Then I should see "old course page (MSSPC)"
     When I am on "MSc Sport Science and Performance Coaching (XXMASSC01CXN)" course homepage

@@ -15,14 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * TODO describe file settings
+ * File settings for tool_solent
  *
  * @package    tool_solent
  * @copyright  2023 Solent University {@link https://www.solent.ac.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
 
-// Create a link to the main page in the reports menu.
+// Create a link to the main page in the admin tools menu.
 $ADMIN->add(
     'tools',
     new admin_externalpage(
