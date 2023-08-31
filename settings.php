@@ -22,13 +22,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
-
-// Create a link to the main page in the admin tools menu.
-$ADMIN->add(
-    'tools',
-    new admin_externalpage(
-        'tool_solent_codeswap',
-        get_string('pluginname', 'tool_solent'),
-        new moodle_url('/admin/tool/solent/index.php'),
-    )
-);
+if ($hassiteconfig) {
+    // Create a link to the main page in the admin tools menu.
+    $ADMIN->add(
+        'tools',
+        new admin_externalpage(
+            'tool_solent_codeswap',
+            get_string('pluginname', 'tool_solent'),
+            new moodle_url('/admin/tool/solent/index.php'),
+        )
+    );
+}
