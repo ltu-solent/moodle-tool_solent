@@ -130,5 +130,18 @@ class swap_course_codes extends \core\task\adhoc_task {
                     "roleid({$newitem->roleid}) userid({$newitem->userid})");
             }
         }
+        // Update assignment queue with new courseid.
+        $assignments = $DB->get_records('local_solsits_assign', ['courseid' => $source->id]);
+        if (count($assignments) > 0) {
+            mtrace("The following assignments have been migrated:");
+            foreach ($assignments as $assignment) {
+                if ($assignment->cmid > 0) {
+                    mtrace("Assignment has already been created: {$assignment->sitsref}");
+                    continue;
+                }
+                $DB->set_field('local_solsits_assign', 'courseid', $target->id, ['id' => $assignment->id]);
+                mtrace("{$assignment->sitsref} moved from course {$source->id} to {$target->id}");
+            }
+        }
     }
 }

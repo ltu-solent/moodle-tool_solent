@@ -26,7 +26,9 @@
 namespace tool_solent\task;
 
 use advanced_testcase;
+use enrol_solaissits_generator;
 use local_solsits\helper;
+use local_solsits_generator;
 
 /**
  * Test swapping codes adhoc task
@@ -88,6 +90,7 @@ class swap_course_codes_test extends advanced_testcase {
         $studentrole = $DB->get_record('role', ['shortname' => 'student']);
         $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $teacher = $this->getDataGenerator()->create_user();
+        /** @var enrol_solaissits_generator $enrolgen */
         $enrolgen = $this->getDataGenerator()->get_plugin_generator('enrol_solaissits');
         $enrolments[] = $enrolgen->create_queued_item([
             'courseid' => $source->id,
@@ -112,6 +115,16 @@ class swap_course_codes_test extends advanced_testcase {
                     "old courseid({$source->id}) roleid({$enrolment->roleid}) userid({$enrolment->userid})\n";
             }
         }
+
+        // Add sits assignments to be moved over.
+        /** @var local_solsits_generator $ssgen */
+        $ssgen = $this->getDataGenerator()->get_plugin_generator('local_solsits');
+        $ssgen->create_sits_assign([
+            'courseid' => $source->id,
+            'sitsref' => 'XXABCDEFGH101_A_SEM1_2023/24_XXABCDEFGH10101_001_0'
+        ]);
+        $assignmentoutput = "The following assignments have been migrated:\n" .
+            "XXABCDEFGH101_A_SEM1_2023/24_XXABCDEFGH10101_001_0 moved from course {$source->id} to {$target->id}\n";
 
         $task = new \tool_solent\task\swap_course_codes();
         $task->set_custom_data(['source' => $source->idnumber, 'target' => $target->idnumber]);
@@ -146,7 +159,7 @@ class swap_course_codes_test extends advanced_testcase {
                 }
             }
         }
-        $this->expectOutputString($expectedoutput . $enrolmentsoutput);
+        $this->expectOutputString($expectedoutput . $enrolmentsoutput . $assignmentoutput);
     }
 
     /**
