@@ -25,11 +25,16 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['codeswap'] = 'Code swap';
 $string['codeswapcsvexample'] = 'Code swap example CSV';
 $string['codeswapdesc'] = 'Upload a CSV file of course idnumbers (source, target) so that course codes and customfields are swapped.';
 $string['codeswapheader'] = 'Code swap';
 $string['csvdelimiter'] = 'CSV delimiter';
 $string['csvincorrectfields'] = 'Incorrect fields entered in the CSV';
+
+$string['logwsusers'] = 'Webservice users';
+
+$string['managelogs'] = 'Manage logs';
 
 $string['newmappingsadded'] = '{$a->new} new code swaps queued of {$a->supplied} supplied.';
 
