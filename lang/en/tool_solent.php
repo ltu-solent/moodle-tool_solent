@@ -32,6 +32,8 @@ $string['codeswapheader'] = 'Code swap';
 $string['csvdelimiter'] = 'CSV delimiter';
 $string['csvincorrectfields'] = 'Incorrect fields entered in the CSV';
 
+$string['deletewslogs'] = 'Delete Web Service logs';
+
 $string['logwsusers'] = 'Webservice users';
 
 $string['managelogs'] = 'Manage logs';

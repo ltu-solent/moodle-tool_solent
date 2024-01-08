@@ -26,7 +26,17 @@ use tool_solent\helper;
  * @author Mark Sharp <mark.sharp@solent.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class delete_ws_logs extends \core\task\adhoc_task {
+class delete_ws_logs extends \core\task\scheduled_task {
+
+    /**
+     * Task name
+     *
+     * @return string
+     */
+    public function get_name() {
+        return get_string('deletewslogs', 'tool_solent');
+    }
+
     /**
      * Execute webservice log deletion
      *
