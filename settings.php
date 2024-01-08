@@ -60,9 +60,6 @@ if ($hassiteconfig) {
         90   => new lang_string('numdays', '', 90),
         60   => new lang_string('numdays', '', 60),
         35   => new lang_string('numdays', '', 35),
-        10   => new lang_string('numdays', '', 10),
-        5    => new lang_string('numdays', '', 5),
-        2    => new lang_string('numdays', '', 2),
     ];
     $settings->add(new admin_setting_configselect('tool_solent/loglifetime',
         new lang_string('loglifetime', 'core_admin'),

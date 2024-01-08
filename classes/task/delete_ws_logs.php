@@ -35,8 +35,8 @@ class delete_ws_logs extends \core\task\adhoc_task {
     public function execute() {
         global $DB;
         $loglifetime = (int)get_config('tool_solent', 'loglifetime');
-
-        if (empty($loglifetime) || $loglifetime < 0) {
+        // Must keep at least 35 days no matter what.
+        if (empty($loglifetime) || $loglifetime < 35) {
             return;
         }
         $wsusers = get_config('tool_solent', 'logwsusers');

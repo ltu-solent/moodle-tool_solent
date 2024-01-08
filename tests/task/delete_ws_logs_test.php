@@ -123,9 +123,20 @@ class delete_ws_logs_test extends \advanced_testcase {
             set_config('loglifetime', $retention, 'tool_solent');
             $deletews->execute();
             $this->assertEquals($wscount + $count, $DB->count_records('logstore_standard_log'));
-            $wscount = $wscount - 5;
+            // Will never delete anything under 35 days.
+            if ($retention > 35) {
+                $wscount = $wscount - 5;
+            }
         }
-        $this->assertEquals(50, $DB->count_records('logstore_standard_log'));
+        $this->assertEquals(55, $DB->count_records('logstore_standard_log'));
+        // Just sample some of the output as the assertions above have covered counting things.
+        $expectedregex = '/Deleted old log records from standard store.*' .
+            'Deleting Web Service logs older than 1000 days.*' .
+            'Total Web Service logs deleted: 0.*' .
+            'Deleting Web Service logs older than 365 days.*' .
+            'Deleting Web Service logs older than 35 days.*' .
+            '(?!Deleting Web Service logs older than 10 days)/s';
+        $this->expectOutputRegex($expectedregex);
     }
 
     /**
