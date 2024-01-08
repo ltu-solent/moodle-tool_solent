@@ -91,7 +91,7 @@ Feature: Upload CSV to swap course codes
     When I am on "MSc Sport Science and Performance Coaching (XXMASSC01CXN)" course homepage
     Then I should not see "old course page (MSSPC)"
     # Now upload the csv to swap codes.
-    And I navigate to "Plugins > Admin tools > Solent" in site administration
+    And I navigate to "Plugins > Admin tools > Solent > Code swap" in site administration
     And I upload "/admin/tool/solent/tests/fixtures/swapcodes.csv" file to "File" filemanager
     When I press "Upload code swap"
     Then I should see "4 new code swaps queued of 4 supplied"
