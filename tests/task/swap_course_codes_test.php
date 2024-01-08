@@ -57,7 +57,7 @@ class swap_course_codes_test extends advanced_testcase {
             'period_code',
             'related_courses',
             'subject_area',
-            'templateapplied'
+            'templateapplied',
         ];
         foreach ($fields as $field) {
             helper::create_sits_coursecustomfields($field);
@@ -73,7 +73,7 @@ class swap_course_codes_test extends advanced_testcase {
             'customfield_location_code' => 'XX',
             'customfield_location_name' => 'Solent',
             'customfield_pagetype' => 'course',
-            'customfield_templateapplied' => 0
+            'customfield_templateapplied' => 0,
         ];
         $source = $this->getDataGenerator()->create_course($sourceconfig);
         $targetconfig = [
@@ -81,7 +81,7 @@ class swap_course_codes_test extends advanced_testcase {
             'idnumber' => 'ABCDEFGH',
             'shortname' => 'ABCDEFGH',
             'startdate' => strtotime('2020-08-01 00:00:00'),
-            'enddate' => 0
+            'enddate' => 0,
         ];
         $target = $this->getDataGenerator()->create_course($targetconfig);
 
@@ -95,7 +95,7 @@ class swap_course_codes_test extends advanced_testcase {
         $enrolments[] = $enrolgen->create_queued_item([
             'courseid' => $source->id,
             'roleid' => $teacherrole->id,
-            'userid' => $teacher->id
+            'userid' => $teacher->id,
         ]);
         $students = [];
         for ($x = 0; $x < 10; $x++) {
@@ -103,7 +103,7 @@ class swap_course_codes_test extends advanced_testcase {
             $enrolments[] = $enrolgen->create_queued_item([
                 'courseid' => $source->id,
                 'roleid' => $studentrole->id,
-                'userid' => $students[$x]->id
+                'userid' => $students[$x]->id,
             ]);
         }
         $queueditems = $DB->get_records('enrol_solaissits');
@@ -121,7 +121,7 @@ class swap_course_codes_test extends advanced_testcase {
         $ssgen = $this->getDataGenerator()->get_plugin_generator('local_solsits');
         $ssgen->create_sits_assign([
             'courseid' => $source->id,
-            'sitsref' => 'XXABCDEFGH101_A_SEM1_2023/24_XXABCDEFGH10101_001_0'
+            'sitsref' => 'XXABCDEFGH101_A_SEM1_2023/24_XXABCDEFGH10101_001_0',
         ]);
         $assignmentoutput = "The following assignments have been migrated:\n" .
             "XXABCDEFGH101_A_SEM1_2023/24_XXABCDEFGH10101_001_0 moved from course {$source->id} to {$target->id}\n";

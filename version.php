@@ -32,5 +32,5 @@ $plugin->requires     = 2022112804.10;
 $plugin->maturity     = MATURITY_STABLE;
 $plugin->dependencies = [
     'local_solsits' => ANY_VERSION,
-    'enrol_solaissits' => ANY_VERSION
+    'enrol_solaissits' => ANY_VERSION,
 ];

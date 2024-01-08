@@ -81,7 +81,7 @@ class swap_course_codes extends \core\task\adhoc_task {
             'period_code',
             'related_courses',
             'subject_area',
-            'templateapplied'
+            'templateapplied',
         ];
 
         $handler = \core_customfield\handler::get_handler('core_course', 'course');
